@@ -1,0 +1,19 @@
+DROP TABLE IF EXISTS duck;
+DROP TABLE IF EXISTS nest;
+
+
+CREATE TABLE nest (
+    id INT GENERATED ALWAYS AS IDENTITY,
+    PRIMARY KEY(id),
+    egg_count INT8
+);
+
+CREATE TABLE duck (
+    id INT GENERATED ALWAYS AS IDENTITY,
+    PRIMARY KEY(id),
+    name VARCHAR(255) NOT NULL,
+    color VARCHAR(20),
+    age INT8,
+    nest_id INT,
+    CONSTRAINT fk_nest FOREIGN KEY(nest_id) REFERENCES nest(id)
+);
